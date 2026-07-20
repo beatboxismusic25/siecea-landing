@@ -1,26 +1,141 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --background: #f4f7fa;
+  --foreground: #1a3347;
+  --primary: #23415c;
+  --primary-dark: #1a3347;
+  --primary-light: #2d5270;
+  --accent: #72c9e7;
+  --accent-dark: #4db8db;
+  --accent-fg: #1a3347;
+  --muted: #5a7186;
+  --card: #ffffff;
+  --border: #d8e2ea;
+  --section-alt: #ffffff;
+
+  --header-bg: #ffffff;
+  --header-fg: #1a3347;
+  --header-fg-muted: #5a7186;
+  --header-border: #d8e2ea;
+
+  --inverse-bg: #23415c;
+  --inverse-fg: #ffffff;
+  --inverse-fg-muted: rgb(255 255 255 / 0.7);
+  --inverse-border: rgb(255 255 255 / 0.12);
+  --inverse-surface: rgb(255 255 255 / 0.08);
+}
+
+.dark {
+  --background: #0c1520;
+  --foreground: #e4edf4;
+  --primary: #72c9e7;
+  --primary-dark: #060d14;
+  --primary-light: #8dd4ec;
+  --accent: #72c9e7;
+  --accent-dark: #4db8db;
+  --accent-fg: #1a3347;
+  --muted: #8fa3b5;
+  --card: #142231;
+  --border: #243647;
+  --section-alt: #101c28;
+
+  --header-bg: #0f1a24;
+  --header-fg: #ffffff;
+  --header-fg-muted: rgb(255 255 255 / 0.75);
+  --header-border: rgb(255 255 255 / 0.1);
+
+  --inverse-bg: #0f1a24;
+  --inverse-fg: #ffffff;
+  --inverse-fg-muted: rgb(255 255 255 / 0.65);
+  --inverse-border: rgb(255 255 255 / 0.1);
+  --inverse-surface: rgb(255 255 255 / 0.05);
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --color-primary: var(--primary);
+  --color-primary-dark: var(--primary-dark);
+  --color-primary-light: var(--primary-light);
+  --color-accent: var(--accent);
+  --color-accent-dark: var(--accent-dark);
+  --color-accent-fg: var(--accent-fg);
+  --color-muted: var(--muted);
+  --color-card: var(--card);
+  --color-border: var(--border);
+  --color-section-alt: var(--section-alt);
+  --color-header-bg: var(--header-bg);
+  --color-header-fg: var(--header-fg);
+  --color-header-fg-muted: var(--header-fg-muted);
+  --color-header-border: var(--header-border);
+  --color-inverse-bg: var(--inverse-bg);
+  --color-inverse-fg: var(--inverse-fg);
+  --color-inverse-fg-muted: var(--inverse-fg-muted);
+  --color-inverse-border: var(--inverse-border);
+  --color-inverse-surface: var(--inverse-surface);
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
+  color-scheme: light;
+}
+
+html.dark {
+  color-scheme: dark;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: var(--font-geist-sans), system-ui, sans-serif;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(24px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.7s ease-out both;
+}
+
+.animate-fade-up-delay-1 {
+  animation: fade-up 0.7s ease-out 0.1s both;
+}
+
+.animate-fade-up-delay-2 {
+  animation: fade-up 0.7s ease-out 0.2s both;
+}
+
+.animate-fade-up-delay-3 {
+  animation: fade-up 0.7s ease-out 0.3s both;
+}
+
+.grid-pattern {
+  background-image: linear-gradient(
+      to right,
+      rgb(35 65 92 / 0.04) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgb(35 65 92 / 0.04) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.dark .grid-pattern {
+  background-image: linear-gradient(
+      to right,
+      rgb(114 201 231 / 0.05) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgb(114 201 231 / 0.05) 1px, transparent 1px);
 }
